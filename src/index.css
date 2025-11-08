@@ -16,6 +16,7 @@ body {
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: orange;
-  --color-secondary: #131222;
+  --color-primary: #FFB51D;
+  /* --color-secondary: #131222; */
+  --color-secondary: #001931;
 }
