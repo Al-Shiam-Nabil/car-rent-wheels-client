@@ -6,37 +6,63 @@ import { useContextHook } from "../Hooks/useContextHook";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const LoginPage = () => {
+  const { googleLogin, signInUser } = useContextHook();
+  const [showPassword, setShowPassword] = useState(false);
 
-     const { googleLogin } = useContextHook();
-     const [showPassword,setShowPassword]=useState(false)
-    
-    
-    
-    //  google log in
-      const handleGoogleLogin = () => {
-        googleLogin()
-          .then((result) => {
-            console.log(result.user);
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "You have logged in successfully.",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          })
-          .catch((error) => {
-            console.log(error.code);
-            Swal.fire({
-              position: "center",
-              icon: "error",
-              title: `${error.code}`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          });
-      };
-    
+  //  email password log in
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        e.target.reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have logged in successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.error(error.code);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+
+  //  google log in
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have logged in successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error.code);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
 
   return (
     <>
@@ -46,7 +72,7 @@ const LoginPage = () => {
         <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl px-4 sm:px-6">
           <div className="card-body">
             <h1 className="text-3xl text-center font-semibold">Login now</h1>
-            <form>
+            <form onSubmit={handleLogin}>
               <fieldset className="fieldset">
                 <label className="label text-accent text-base font-medium mt-2">
                   Email
@@ -60,20 +86,21 @@ const LoginPage = () => {
                 <label className="label text-accent text-base font-medium mt-2">
                   Password
                 </label>
-                     <div className="relative">
-                              <input
-                               type={showPassword ? 'text' : 'password'}
-                               className="input shadow-none bg-gray-100 border-none outline-none w-full"
-                               placeholder="Password"
-                               name="password"
-                             />
-             
-                           <div onClick={()=>setShowPassword(!showPassword)} className="absolute top-3 right-3 text-xl cursor-pointer z-30">
-                               {
-                                 showPassword ?  <FaRegEyeSlash /> : <FaRegEye /> 
-                             }
-                           </div>
-                        </div>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="input shadow-none bg-gray-100 border-none outline-none w-full"
+                    placeholder="Password"
+                    name="password"
+                  />
+
+                  <div
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute top-3 right-3 text-xl cursor-pointer z-30"
+                  >
+                    {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                  </div>
+                </div>
 
                 <button className="btn btn-secondary hover:btn-primary hover:text-secondary outline-none border-none shadow-none mt-4">
                   Log in
@@ -84,7 +111,10 @@ const LoginPage = () => {
             <p className="text-center">Or</p>
 
             {/* Google */}
-            <button onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5]">
+            <button
+              onClick={handleGoogleLogin}
+              className="btn bg-white text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"

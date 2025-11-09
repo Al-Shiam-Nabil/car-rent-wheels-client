@@ -8,9 +8,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 const RegisterPage = () => {
   const { googleLogin, createEmailPasswordUser } = useContextHook();
   const [showPassword, setShowPassword] = useState(false);
-  const [error,setError]=useState(null)
-
-  
+  const [error, setError] = useState(null);
 
   //   create email password user
   const handleCreateUser = (e) => {
@@ -20,29 +18,31 @@ const RegisterPage = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
 
- const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
- if(!passwordRegex.test(password)){
-    setError("Password must be at least 6 characters long and include at least one uppercase and one lowercase letter.")
-   return  Swal.fire({
-          position: "center",
-          icon: "error",
-          title:"Invalid Password !",
-          showConfirmButton: false,
-          timer: 1500,
-        });
- }else{
-    setError(null)
- }
- 
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 6 characters long and include at least one uppercase and one lowercase letter."
+      );
+      return Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Invalid Password !",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      setError(null);
+    }
 
     createEmailPasswordUser(email, password)
       .then((result) => {
         console.log(result.user);
+        e.target.reset();
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "You have logged in successfully.",
+          title: "You have create account successfully.",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -148,9 +148,7 @@ const RegisterPage = () => {
                   </div>
                 </div>
 
-                {
-                    error && <p className="text-red-500 mt-1">{error}</p>
-                }
+                {error && <p className="text-red-500 mt-1">{error}</p>}
 
                 <button className="btn btn-secondary hover:btn-primary hover:text-secondary outline-none border-none shadow-none mt-4">
                   Register
