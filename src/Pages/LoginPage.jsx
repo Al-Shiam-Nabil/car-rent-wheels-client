@@ -6,11 +6,11 @@ import { useContextHook } from "../Hooks/useContextHook";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const LoginPage = () => {
-  const {user, googleLogin, signInUser,setLoading } = useContextHook();
+  const { user, googleLogin, signInUser, setLoading } = useContextHook();
   const [showPassword, setShowPassword] = useState(false);
 
-  if(user){
-    return <Navigate to="/"></Navigate>
+  if (user) {
+    return <Navigate to="/"></Navigate>;
   }
 
   //  email password log in
@@ -30,7 +30,7 @@ const LoginPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        setLoading(false)
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error.code);
@@ -41,7 +41,7 @@ const LoginPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        setLoading(false)
+        setLoading(false);
       });
   };
 
@@ -57,7 +57,7 @@ const LoginPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-           setLoading(false)
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error.code);
@@ -68,7 +68,7 @@ const LoginPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-           setLoading(false)
+        setLoading(false);
       });
   };
 
