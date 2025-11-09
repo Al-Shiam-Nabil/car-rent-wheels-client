@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const RegisterPage = () => {
-  const { googleLogin, createEmailPasswordUser } = useContextHook();
+  const { googleLogin, createEmailPasswordUser,setLoading } = useContextHook();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
 
@@ -31,6 +31,7 @@ const RegisterPage = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      
     } else {
       setError(null);
     }
@@ -46,6 +47,7 @@ const RegisterPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+           setLoading(false)
       })
       .catch((error) => {
         console.error(error.code);
@@ -56,6 +58,7 @@ const RegisterPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+           setLoading(false)
       });
   };
 
@@ -71,6 +74,7 @@ const RegisterPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+           setLoading(false)
       })
       .catch((error) => {
         console.log(error.code);
@@ -81,6 +85,7 @@ const RegisterPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+           setLoading(false)
       });
   };
 

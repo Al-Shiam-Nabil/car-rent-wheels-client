@@ -1,8 +1,12 @@
 import Container from "../Container/Container";
 import { Link } from "react-router";
 import MyLink from "./MyLink";
+import { useContextHook } from "../../Hooks/useContextHook";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, setUser, loading, setLoading, signOutUser } = useContextHook();
+
   const link = (
     <>
       <MyLink to="/">Home</MyLink>
@@ -12,6 +16,32 @@ const Navbar = () => {
       <MyLink to="/browse-cars">Browse Cars</MyLink>
     </>
   );
+
+  const handleLogOut = () => {
+    signOutUser()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have logged out successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setLoading(false);
+        setUser(null);
+      })
+      .catch((error) => {
+        console.error(error.code);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="bg-base-100 shadow-sm w-full max-w-[1400px]  h-auto mx-auto fixed z-100 top-0">
@@ -51,12 +81,50 @@ const Navbar = () => {
           <ul className="flex items-center gap-5 px-1">{link}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login">
-            {" "}
-            <button className="btn btn-primary text-secondary rounded-full outline-none border-none shadow-none hover:btn-secondary hover:text-white">
-              Log in
-            </button>
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button">
+                {loading ? (
+                  <div className="skeleton w-12 h-12 rounded-full"></div>
+                ) : (
+                  <img
+                    src={user?.photoURL}
+                    alt={user?.displayName}
+                    className="w-12 h-12 rounded-full bg-gray-200 cursor-pointer"
+                  />
+                )}
+              </div>
+              <ul
+                tabIndex="-1"
+                className="dropdown-content  bg-gray-600 text-white space-y-2.5 rounded-box z-200 min-w-52 p-3 shadow-sm"
+              >
+                <li className="text-nowrap text-sm">{user?.displayName}</li>
+                <li className="text-nowrap text-sm">{user?.email}</li>
+                <li>
+                  <Link>
+                    {" "}
+                    <button
+                      onClick={handleLogOut}
+                      className="btn btn-sm btn-primary text-secondary rounded-full outline-none border-none shadow-none hover:btn-secondary hover:text-white"
+                    >
+                      Log out
+                    </button>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/login">
+              {loading ? (
+                // <div className="skeleton rounded-full h-12 w-12"></div>
+                <div className="skeleton rounded-full w-18 h-10"></div>
+              ) : (
+                <button className="btn btn-primary text-secondary rounded-full outline-none border-none shadow-none hover:btn-secondary hover:text-white">
+                  Log in
+                </button>
+              )}
+            </Link>
+          )}
         </div>
       </Container>
     </div>
