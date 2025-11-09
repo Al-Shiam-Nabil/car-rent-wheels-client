@@ -6,24 +6,60 @@ import Swal from "sweetalert2";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const RegisterPage = () => {
-  const { googleLogin,createEmailPasswordUser} = useContextHook();
-  const [showPassword,setShowPassword]=useState(false)
+  const { googleLogin, createEmailPasswordUser } = useContextHook();
+  const [showPassword, setShowPassword] = useState(false);
+  const [error,setError]=useState(null)
 
-//   create email password user
-const handleCreateUser=(e)=>{
-    e.preventDefault()
-    const name=e.target.name.value;
-    const email=e.target.email.value;
-    const photo=e.target.photo.value;
-    const password=e.target.password.value;
+  
 
-    console.log({name,email,photo,password})
-}
+  //   create email password user
+  const handleCreateUser = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const photo = e.target.photo.value;
+    const password = e.target.password.value;
 
+ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
+ if(!passwordRegex.test(password)){
+    setError("Password must be at least 6 characters long and include at least one uppercase and one lowercase letter.")
+   return  Swal.fire({
+          position: "center",
+          icon: "error",
+          title:"Invalid Password !",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+ }else{
+    setError(null)
+ }
+ 
 
+    createEmailPasswordUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have logged in successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.error(error.code);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
 
-// google log in
+  // google log in
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
@@ -96,20 +132,25 @@ const handleCreateUser=(e)=>{
                 <label className="label text-accent text-base font-medium mt-2">
                   Password
                 </label>
-           <div className="relative">
-                 <input
-                  type={showPassword ? 'text' : 'password'}
-                  className="input shadow-none bg-gray-100 border-none outline-none w-full"
-                  placeholder="Password"
-                  name="password"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="input shadow-none bg-gray-100 border-none outline-none w-full"
+                    placeholder="Password"
+                    name="password"
+                  />
 
-              <div onClick={()=>setShowPassword(!showPassword)} className="absolute top-3 right-3 text-xl cursor-pointer z-30">
-                  {
-                    showPassword ?  <FaRegEyeSlash /> : <FaRegEye /> 
+                  <div
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute top-3 right-3 text-xl cursor-pointer z-30"
+                  >
+                    {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                  </div>
+                </div>
+
+                {
+                    error && <p className="text-red-500 mt-1">{error}</p>
                 }
-              </div>
-           </div>
 
                 <button className="btn btn-secondary hover:btn-primary hover:text-secondary outline-none border-none shadow-none mt-4">
                   Register
