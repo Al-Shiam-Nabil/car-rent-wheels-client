@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import Container from "../Components/Container/Container";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
 import Swal from "sweetalert2";
 import { useContextHook } from "../Hooks/useContextHook";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const LoginPage = () => {
-  const { googleLogin, signInUser,setLoading } = useContextHook();
+  const {user, googleLogin, signInUser,setLoading } = useContextHook();
   const [showPassword, setShowPassword] = useState(false);
+
+  if(user){
+    return <Navigate to="/"></Navigate>
+  }
 
   //  email password log in
   const handleLogin = (e) => {

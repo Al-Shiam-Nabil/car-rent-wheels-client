@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
 import Container from "../Components/Container/Container";
 import { useContextHook } from "../Hooks/useContextHook";
 import Swal from "sweetalert2";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const RegisterPage = () => {
-  const { googleLogin, createEmailPasswordUser,setLoading } = useContextHook();
+  const {
+    user,
+
+    googleLogin,
+    createEmailPasswordUser,
+    setLoading,
+    updateUserProfile,
+  } = useContextHook();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+
+  if (user) {
+    return <Navigate to="/"></Navigate>;
+  }
 
   //   create email password user
   const handleCreateUser = (e) => {
@@ -31,23 +42,39 @@ const RegisterPage = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      
     } else {
       setError(null);
     }
 
+    const updatedInfo = { displayName: name, photoURL: photo };
+    console.log(updatedInfo);
+
     createEmailPasswordUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        e.target.reset();
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "You have create account successfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-           setLoading(false)
+      .then(() => {
+        updateUserProfile(updatedInfo)
+          .then(() => {
+            e.target.reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "You have create account successfully.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error(error.code);
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: `${error.code}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            setLoading(false);
+          });
       })
       .catch((error) => {
         console.error(error.code);
@@ -58,7 +85,7 @@ const RegisterPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-           setLoading(false)
+        setLoading(false);
       });
   };
 
@@ -74,7 +101,7 @@ const RegisterPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-           setLoading(false)
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error.code);
@@ -85,7 +112,7 @@ const RegisterPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-           setLoading(false)
+        setLoading(false);
       });
   };
 

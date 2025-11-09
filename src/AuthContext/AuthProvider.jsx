@@ -7,28 +7,28 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-
-    const [user,setUser]=useState(null)
-    const [loading,setLoading]=useState(true)
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const createEmailPasswordUser = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signInUser = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const googleLogin = () => {
-    setLoading(true)
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -36,23 +36,28 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         // console.log(currentUser);
-        setLoading(false)
-        setUser(currentUser)
+        setLoading(false);
+        setUser(currentUser);
       }
-      setLoading(false)
-    
+      setLoading(false);
     });
     return () => {
       unsubscribe();
     };
   }, []);
 
-//   signout user
-
-const signOutUser=()=>{
+  const updateUserProfile=(updatedData)=>{
     setLoading(true)
-    return signOut(auth)
-}
+    console.log(updatedData)
+    return updateProfile(auth.currentUser,updatedData)
+  }
+console.log(user)
+  //   signout user
+
+  const signOutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   const info = {
     signInUser,
@@ -62,7 +67,8 @@ const signOutUser=()=>{
     setUser,
     loading,
     setLoading,
-    signOutUser
+    signOutUser,
+    updateUserProfile
   };
   return <AuthContext value={info}>{children}</AuthContext>;
 };
