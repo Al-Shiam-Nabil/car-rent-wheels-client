@@ -1,22 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import Container from "../Components/Container/Container";
+import { useContextHook } from "../Hooks/useContextHook";
+import Swal from "sweetalert2";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const RegisterPage = () => {
+  const { googleLogin,createEmailPasswordUser} = useContextHook();
+  const [showPassword,setShowPassword]=useState(false)
+
+//   create email password user
+const handleCreateUser=(e)=>{
+    e.preventDefault()
+    const name=e.target.name.value;
+    const email=e.target.email.value;
+    const photo=e.target.photo.value;
+    const password=e.target.password.value;
+
+    console.log({name,email,photo,password})
+}
+
+
+
+
+// google log in
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have logged in successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error.code);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+
   return (
     <>
       <title>Rent Wheels - Register</title>
 
-      
       <Container className="grid place-items-center py-20">
         <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl px-4 sm:px-6">
           <div className="card-body">
-            <h1 className="text-3xl text-center font-semibold">Register here</h1>
-            <form>
+            <h1 className="text-3xl text-center font-semibold">
+              Register here
+            </h1>
+            <form onSubmit={handleCreateUser}>
               <fieldset className="fieldset">
                 {/* name */}
-                  <label className="label text-accent text-base font-medium mt-2">
-                Name
+                <label className="label text-accent text-base font-medium mt-2">
+                  Name
                 </label>
                 <input
                   type="text"
@@ -36,8 +82,8 @@ const RegisterPage = () => {
                 />
 
                 {/* photoURL */}
-                  <label className="label text-accent text-base font-medium mt-2">
-            PhotoURL
+                <label className="label text-accent text-base font-medium mt-2">
+                  PhotoURL
                 </label>
                 <input
                   type="text"
@@ -50,15 +96,23 @@ const RegisterPage = () => {
                 <label className="label text-accent text-base font-medium mt-2">
                   Password
                 </label>
-                <input
-                  type="password"
+           <div className="relative">
+                 <input
+                  type={showPassword ? 'text' : 'password'}
                   className="input shadow-none bg-gray-100 border-none outline-none w-full"
                   placeholder="Password"
                   name="password"
                 />
 
+              <div onClick={()=>setShowPassword(!showPassword)} className="absolute top-3 right-3 text-xl cursor-pointer z-30">
+                  {
+                    showPassword ?  <FaRegEyeSlash /> : <FaRegEye /> 
+                }
+              </div>
+           </div>
+
                 <button className="btn btn-secondary hover:btn-primary hover:text-secondary outline-none border-none shadow-none mt-4">
-                Register
+                  Register
                 </button>
               </fieldset>
             </form>
@@ -66,7 +120,10 @@ const RegisterPage = () => {
             <p className="text-center">Or</p>
 
             {/* Google */}
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            <button
+              onClick={handleGoogleLogin}
+              className="btn bg-white text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"

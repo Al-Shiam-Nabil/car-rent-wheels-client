@@ -1,8 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../Components/Container/Container";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
+import { useContextHook } from "../Hooks/useContextHook";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const LoginPage = () => {
+
+     const { googleLogin } = useContextHook();
+     const [showPassword,setShowPassword]=useState(false)
+    
+    
+    
+    //  google log in
+      const handleGoogleLogin = () => {
+        googleLogin()
+          .then((result) => {
+            console.log(result.user);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "You have logged in successfully.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((error) => {
+            console.log(error.code);
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: `${error.code}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
+      };
+    
+
   return (
     <>
       <title>Rent Wheels - Login</title>
@@ -25,12 +60,20 @@ const LoginPage = () => {
                 <label className="label text-accent text-base font-medium mt-2">
                   Password
                 </label>
-                <input
-                  type="password"
-                  className="input shadow-none bg-gray-100 border-none outline-none w-full"
-                  placeholder="Password"
-                  name="password"
-                />
+                     <div className="relative">
+                              <input
+                               type={showPassword ? 'text' : 'password'}
+                               className="input shadow-none bg-gray-100 border-none outline-none w-full"
+                               placeholder="Password"
+                               name="password"
+                             />
+             
+                           <div onClick={()=>setShowPassword(!showPassword)} className="absolute top-3 right-3 text-xl cursor-pointer z-30">
+                               {
+                                 showPassword ?  <FaRegEyeSlash /> : <FaRegEye /> 
+                             }
+                           </div>
+                        </div>
 
                 <button className="btn btn-secondary hover:btn-primary hover:text-secondary outline-none border-none shadow-none mt-4">
                   Log in
@@ -41,7 +84,7 @@ const LoginPage = () => {
             <p className="text-center">Or</p>
 
             {/* Google */}
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            <button onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5]">
               <svg
                 aria-label="Google logo"
                 width="16"
