@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, Navigate } from "react-router";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import Container from "../Components/Container/Container";
 import { useContextHook } from "../Hooks/useContextHook";
 import Swal from "sweetalert2";
@@ -16,10 +16,15 @@ const RegisterPage = () => {
   } = useContextHook();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  if (user) {
-    return <Navigate to="/"></Navigate>;
-  }
+  useEffect(() => {
+    if (user) {
+      navigate(location?.state ? location?.state : "/");
+      return;
+    }
+  }, [location?.state, navigate, user]);
 
   //   create email password user
   const handleCreateUser = (e) => {
@@ -101,6 +106,7 @@ const RegisterPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+
         setLoading(false);
       })
       .catch((error) => {

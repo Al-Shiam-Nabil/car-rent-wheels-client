@@ -4,6 +4,8 @@ import HomePage from "../Pages/HomePage";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
 import ErrorPage from "../Pages/ErrorPage";
+import AddCarPage from "../Pages/AddCarPage";
+import PrivateRoute from "../AuthContext/PrivateRoute";
 
 const router=createBrowserRouter([
     {
@@ -21,6 +23,10 @@ const router=createBrowserRouter([
             {
                 path:'register',
                 Component:RegisterPage
+            },
+            {
+                path:'add-car',
+                element:<PrivateRoute><AddCarPage></AddCarPage></PrivateRoute>
             }
         ]
     }
