@@ -1,10 +1,15 @@
 import React from 'react';
+import SwiperSlider from '../Components/Home/Banner/SwiperSlider';
 
 const HomePage = () => {
     return (
-        <div>
-            homepage
-        </div>
+      <>
+      <title>Rent Wheels - Home</title>
+
+      <div>
+        <SwiperSlider></SwiperSlider>
+      </div>
+      </>
     );
 };
 

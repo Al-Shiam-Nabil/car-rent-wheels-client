@@ -15,7 +15,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-base-100 shadow-sm">
+    <div className="bg-base-100 shadow-sm w-full max-w-[1400px]  h-auto mx-auto fixed z-10 top-0">
       <Container className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
