@@ -26,43 +26,74 @@ const Footer = () => {
 
           <div className="space-y-3  md:col-span-1 lg:col-span-2">
             <h3 className="text-white text-lg font-medium">Company</h3>
-            <ul className="space-y-2">
-              <li className="hover:underline cursor-pointer">About Us</li>
-              <li className="hover:underline cursor-pointer">Our Mission</li>
-              <li className="hover:underline cursor-pointer">Contact Saled</li>
+            <ul className="space-y-2 flex flex-col">
+              <li>
+                {" "}
+                <span className="hover:underline cursor-pointer inline-block">
+                  About Us
+                </span>
+              </li>
+              <li>
+                <span className="hover:underline cursor-pointer inline-block">
+                  Our Mission
+                </span>
+              </li>
+              <li>
+                <span className="hover:underline cursor-pointer inline-block">
+                  Contact Us
+                </span>
+              </li>
             </ul>
           </div>
 
           <div className="space-y-3 md:col-span-1 lg:col-span-2">
             <h3 className="text-white text-lg font-medium">Services</h3>
-            <ul className="space-y-2">
-              <li className="hover:underline cursor-pointer">
-                Products & Services
+            <ul className="space-y-2 flex flex-col">
+              <li>
+                <span className="hover:underline cursor-pointer inline-block">
+                  Products & Services
+                </span>
               </li>
-              <li className="hover:underline cursor-pointer">
-                Customer Stories
+              <li>
+                <span className="hover:underline cursor-pointer inline-block">
+                  Customer Stories
+                </span>
               </li>
-              <li className="hover:underline cursor-pointer">Download Apps</li>
+              <li>
+                <span className="hover:underline cursor-pointer inline-block">
+                  Download Apps
+                </span>
+              </li>
             </ul>
           </div>
 
           <div className="space-y-3 md:col-span-1 lg:col-span-2">
             <h3 className="text-white text-lg font-medium">Information</h3>
             <ul className="space-y-2">
-              <li className="hover:underline cursor-pointer">Privacy Policy</li>
-              <li className="hover:underline cursor-pointer">
-                Terms & Conditions
+              <li>
+                <span className="hover:underline cursor-pointer inline-block">
+                  Privacy Policy
+                </span>
               </li>
-              <li className="hover:underline cursor-pointer">Join Us</li>
+              <li>
+                <span className="hover:underline cursor-pointer inline-block">
+                  Terms & Conditions
+                </span>
+              </li>
+              <li>
+                <span className="hover:underline cursor-pointer inline-block">
+                  Join Us
+                </span>
+              </li>
             </ul>
           </div>
 
           <div className=" space-y-3 md:col-span-1 lg:col-span-2">
             <h3 className="text-white text-lg font-medium">Social Links</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 flex flex-col">
               <li>
                 <Link
-                  className="flex items-center gap-2 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-2 hover:underline cursor-pointer "
                   to="https://x.com/"
                   target="_blank"
                 >
@@ -72,7 +103,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  className="flex items-center gap-2 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-2 hover:underline cursor-pointer "
                   to="https://www.linkedin.com/"
                   target="_blank"
                 >
@@ -83,7 +114,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  className="flex items-center gap-2 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-2 hover:underline cursor-pointer "
                   to="https://www.facebook.com/nabilswear"
                   target="_blank"
                 >
@@ -93,7 +124,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  className="flex items-center gap-2 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-2 hover:underline cursor-pointer "
                   to="https://mail.google.com/mail/u/0/#inbox"
                   target="_blank"
                 >

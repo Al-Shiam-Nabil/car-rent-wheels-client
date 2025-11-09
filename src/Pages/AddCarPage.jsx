@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import Container from "../Components/Container/Container";
 
 const AddCarPage = () => {
-    return (
-        <div>
-            add car
-        </div>
-    );
+  return (
+    <>
+      <title>Rent Wheels - Add Car</title>
+
+      <Container>
+        add car
+      </Container>
+    </>
+  );
 };
 
 export default AddCarPage;
