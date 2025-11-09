@@ -9,6 +9,7 @@ body {
   max-width: 1400px;
   margin-inline: auto;
    color: #403f3f;
+   background-color:#f9fafb ;
 }
 
 @import "tailwindcss";
@@ -19,4 +20,5 @@ body {
   --color-primary: #FFB51D;
   /* --color-secondary: #131222; */
   --color-secondary: #001931;
+    --color-accent: #403f3f;
 }

@@ -52,9 +52,9 @@ const Navbar = () => {
           <ul className="flex items-center gap-5 px-1">{link}</ul>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-primary text-secondary rounded-full outline-none border-none shadow-none hover:btn-secondary hover:text-white">
+         <Link to="/login"> <button className="btn btn-primary text-secondary rounded-full outline-none border-none shadow-none hover:btn-secondary hover:text-white">
             Log in
-          </button>
+          </button></Link>
         </div>
       </Container>
     </div>

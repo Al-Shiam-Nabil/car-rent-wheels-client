@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#001931] pt-[80px] text-white">
       <Container>
-        <div className=" text-sm grid grid-cols-1 md:grid-cols-4 lg:grid-cols-11 gap-8 md:gap-2 pb-[50px] border-b border-gray-800">
+        <div className=" text-sm grid grid-cols-1 md:grid-cols-3 lg:grid-cols-11 gap-8 lg:gap-2 pb-[50px] border-b border-gray-800">
           <div className="col-span-full lg:col-span-3 space-y-3 text-left mb-0 md:mb-7 lg:mb-0 lg:pr-[60px]">
             <h3 className="font-semibold text-2xl">
               <span className="text-primary">Rent</span>{" "}
@@ -98,7 +98,7 @@ const Footer = () => {
                   target="_blank"
                 >
                   {" "}
-                  <MdEmail />
+                  <MdEmail className="text-lg  min-w-5" />
                   rentwheels@.gmail.com
                 </Link>
               </li>
