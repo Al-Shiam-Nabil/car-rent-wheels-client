@@ -26,6 +26,8 @@ const AddCarPage = () => {
       description,
       provider_name,
       provider_email,
+      status:'available',
+      create_at: new Date()
     };
 
     fetch("http://localhost:3000/cars", {
