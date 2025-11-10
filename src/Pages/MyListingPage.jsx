@@ -17,7 +17,6 @@ const MyListingPage = () => {
     fetch(`http://localhost:3000/my-cars?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCars(data);
         setLoading(false);
       });
@@ -98,6 +97,40 @@ const MyListingPage = () => {
       });
   };
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/cars/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("afterDelete", data);
+            if (data?.deletedCount === 1) {
+              const remainingCars = cars.filter((e) => e._id !== id);
+              setCars(remainingCars);
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your car has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
+
   if (loading) {
     return <LoadingComponent></LoadingComponent>;
   }
@@ -141,14 +174,17 @@ const MyListingPage = () => {
                     >
                       {car?.status}
                     </td>
-                    <td className="space-y-1">
+                    <td className="space-x-1 space-y-1">
                       <button
                         onClick={() => handleUpdateModal(car?._id)}
-                        className="btn btn-sm w-[70px] text-secondary"
+                        className="btn w-[70px] h-8 text-secondary"
                       >
                         Update
-                      </button>{" "}
-                      <button className="btn btn-sm w-[70px] text-red-500">
+                      </button>
+                      <button
+                        onClick={() => handleDelete(car?._id)}
+                        className="btn h-8 w-[70px] text-red-500"
+                      >
                         Delete
                       </button>
                     </td>
