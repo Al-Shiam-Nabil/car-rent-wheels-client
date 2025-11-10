@@ -22,7 +22,7 @@ const ErrorPage = () => {
             onClick={() => {
               navigate("/");
             }}
-            className="btn btn-secondary hover:btn-primary outline-none border-none"
+            className="btn btn-secondary hover:btn-primary hover:text-secondary outline-none border-none"
           >
             Back To Home
           </button>

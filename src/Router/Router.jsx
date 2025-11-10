@@ -6,6 +6,7 @@ import RegisterPage from "../Pages/RegisterPage";
 import ErrorPage from "../Pages/ErrorPage";
 import AddCarPage from "../Pages/AddCarPage";
 import PrivateRoute from "../AuthContext/PrivateRoute";
+import MyListingPage from "../Pages/MyListingPage";
 
 const router=createBrowserRouter([
     {
@@ -27,6 +28,11 @@ const router=createBrowserRouter([
             {
                 path:'add-car',
                 element:<PrivateRoute><AddCarPage></AddCarPage></PrivateRoute>
+            }
+            ,
+            {
+                path:'my-listings',
+                element:<PrivateRoute><MyListingPage></MyListingPage></PrivateRoute>
             }
         ]
     }

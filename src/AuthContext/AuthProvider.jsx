@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
     console.log(updatedData)
     return updateProfile(auth.currentUser,updatedData)
   }
-console.log(user)
+
   //   signout user
 
   const signOutUser = () => {
