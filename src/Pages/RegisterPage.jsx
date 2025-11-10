@@ -29,10 +29,11 @@ const RegisterPage = () => {
   //   create email password user
   const handleCreateUser = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
+    const name = (e.target.name.value).trim().toUpperCase();
     const email = e.target.email.value;
-    const photo = e.target.photo.value;
+    const photo = (e.target.photo.value).trim();
     const password = e.target.password.value;
+
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
@@ -143,6 +144,7 @@ const RegisterPage = () => {
                   className="input shadow-none bg-gray-100 border-none outline-none w-full"
                   placeholder="Name"
                   name="name"
+                  required
                 />
                 {/* email */}
                 <label className="label text-accent text-base font-medium mt-2">
@@ -153,6 +155,7 @@ const RegisterPage = () => {
                   className="input shadow-none bg-gray-100 border-none outline-none w-full"
                   placeholder="Email"
                   name="email"
+                  required
                 />
 
                 {/* photoURL */}
@@ -164,6 +167,7 @@ const RegisterPage = () => {
                   className="input shadow-none bg-gray-100 border-none outline-none w-full"
                   placeholder="PhotoURL"
                   name="photo"
+                  required
                 />
 
                 {/* password */}
@@ -176,6 +180,7 @@ const RegisterPage = () => {
                     className="input shadow-none bg-gray-100 border-none outline-none w-full"
                     placeholder="Password"
                     name="password"
+                    required
                   />
 
                   <div

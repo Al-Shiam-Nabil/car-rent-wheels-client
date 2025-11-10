@@ -28,6 +28,8 @@ const LoginPage = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+    console.log(email)
+
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -101,6 +103,7 @@ const LoginPage = () => {
                   className="input shadow-none bg-gray-100 border-none outline-none w-full"
                   placeholder="Email"
                   name="email"
+                  required
                 />
                 <label className="label text-accent text-base font-medium mt-2">
                   Password
@@ -111,6 +114,7 @@ const LoginPage = () => {
                     className="input shadow-none bg-gray-100 border-none outline-none w-full"
                     placeholder="Password"
                     name="password"
+                    required
                   />
 
                   <div
