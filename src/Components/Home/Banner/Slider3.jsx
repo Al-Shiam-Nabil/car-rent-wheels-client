@@ -12,7 +12,7 @@ const Slider3 = () => {
 
       <div className="absolute inset-0 grid place-items-center">
         <Container>
-          <h2 className="text-6xl text-white/90 font-bold">
+          <h2 className="text-4xl sm:text-6xl text-white/90 font-bold">
             <Typewriter
               options={{
                 strings: [

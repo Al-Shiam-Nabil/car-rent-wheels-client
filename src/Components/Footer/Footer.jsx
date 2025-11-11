@@ -124,7 +124,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  className="inline-flex items-center gap-2 hover:underline cursor-pointer "
+                  className="inline-flex flex-wrap items-center gap-2 hover:underline cursor-pointer "
                   to="https://mail.google.com/mail/u/0/#inbox"
                   target="_blank"
                 >
