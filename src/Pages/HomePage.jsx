@@ -5,6 +5,7 @@ import LoadingComponent from "../Components/LoadingSpinner/LoadingComponent";
 import CarCard from "../Components/BrowseCar/CarCard";
 import { Link } from "react-router";
 import { FaArrowRight } from "react-icons/fa6";
+import WhyRentUs from "../Components/Home/WhyRentUs/WhyRentUs";
 
 const HomePage = () => {
   const [cars, setCars] = useState(null);
@@ -30,7 +31,7 @@ const HomePage = () => {
 
       <Container>
         {/* featured cars */}
-        <div className="my-20">
+        <div className="mt-20 mb-10">
           <h2 className="text-center text-3xl font-semibold ">
             Featured Cars
           </h2>
@@ -62,8 +63,14 @@ const HomePage = () => {
          
         </div>
 
+     
+
          
       </Container>
+
+   {/* why rent us */}
+        <WhyRentUs></WhyRentUs>
+
     </>
   );
 };
