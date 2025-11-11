@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import AddCarPage from "../Pages/AddCarPage";
 import PrivateRoute from "../AuthContext/PrivateRoute";
 import MyListingPage from "../Pages/MyListingPage";
+import BrowseCarPage from "../Pages/BrowseCarPage";
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path:'browse-cars',
+        Component:BrowseCarPage
+      }
       
      
     ],

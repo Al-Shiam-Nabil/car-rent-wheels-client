@@ -131,15 +131,15 @@ const MyListingPage = () => {
     });
   };
 
-  if (loading) {
-    return <LoadingComponent></LoadingComponent>;
-  }
+ 
 
   return (
     <>
       <title>Rent Wheels - My Listing</title>
       <Container>
-        {loading || cars.length === 0 ? (
+        {loading ? (
+          <LoadingComponent></LoadingComponent>
+        ) : cars.length === 0 ? (
           <h3 className="text-primary font-semibold text-xl sm:text-3xl py-20 text-center">
             No car available now !
           </h3>
