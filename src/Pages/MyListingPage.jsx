@@ -140,7 +140,7 @@ const MyListingPage = () => {
         {loading ? (
           <LoadingComponent></LoadingComponent>
         ) : cars.length === 0 ? (
-          <h3 className="text-primary font-semibold text-xl sm:text-3xl py-20 text-center">
+          <h3 className="text-primary font-medium text-xl sm:text-3xl py-20 text-center">
             No car available now !
           </h3>
         ) : (
@@ -234,7 +234,7 @@ const MyListingPage = () => {
                   Category
                 </label>
                 <select
-                  defaultValue={updatedCar?.category}
+                  value={updatedCar?.category}
                   className="select"
                   name="category"
                 >

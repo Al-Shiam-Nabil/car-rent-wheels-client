@@ -21,17 +21,17 @@ const BrowseCarPage = () => {
     <>
       <title>Rent Wheels - Browse Cars</title>
 
-      <Container>
-        <h2 className="text-center text-3xl font-semibold my-10">All Cars</h2>
+      <Container className="pt-10 pb-20">
+        <h2 className="text-center text-3xl font-semibold ">All Cars</h2>
 
         {loading ? (
           <LoadingComponent></LoadingComponent>
         ) : allCars.length === 0 ? (
-          <h3 className="text-primary font-semibold text-xl sm:text-3xl py-20 text-center">
+          <h3 className="text-primary font-medium text-xl sm:text-3xl  py-10 text-center">
             No car available now !
           </h3>
         ) : (
-         <div className="grid grid-cols-4 gap-x-5 gap-y-8 mb-20"> {allCars.map((car) => <CarCard key={car._id} car={car}></CarCard>)}</div>
+         <div className="grid grid-cols-4 gap-x-5 gap-y-8 pt-10"> {allCars.map((car) => <CarCard key={car._id} car={car}></CarCard>)}</div>
         )}
       </Container>
     </>
