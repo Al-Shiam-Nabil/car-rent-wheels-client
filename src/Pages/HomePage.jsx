@@ -6,6 +6,7 @@ import CarCard from "../Components/BrowseCar/CarCard";
 import { Link } from "react-router";
 import { FaArrowRight } from "react-icons/fa6";
 import WhyRentUs from "../Components/Home/WhyRentUs/WhyRentUs";
+import TopRatedCar from "../Components/Home/TopRatedCar/TopRatedCar";
 
 const HomePage = () => {
   const [cars, setCars] = useState(null);
@@ -70,6 +71,9 @@ const HomePage = () => {
 
    {/* why rent us */}
         <WhyRentUs></WhyRentUs>
+
+        {/* Top rated cars */}
+        <TopRatedCar></TopRatedCar>
 
     </>
   );
