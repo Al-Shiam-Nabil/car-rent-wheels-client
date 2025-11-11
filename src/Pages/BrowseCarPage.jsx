@@ -19,7 +19,7 @@ const BrowseCarPage = () => {
 
   return (
     <>
-      <title>Rent Wheels - All Cars</title>
+      <title>Rent Wheels - Browse Cars</title>
 
       <Container>
         <h2 className="text-center text-3xl font-semibold my-10">All Cars</h2>
@@ -31,7 +31,7 @@ const BrowseCarPage = () => {
             No car available now !
           </h3>
         ) : (
-         <div className="grid grid-cols-4 gap-5 mb-20"> {allCars.map((car) => <CarCard key={car._id} car={car}></CarCard>)}</div>
+         <div className="grid grid-cols-4 gap-x-5 gap-y-8 mb-20"> {allCars.map((car) => <CarCard key={car._id} car={car}></CarCard>)}</div>
         )}
       </Container>
     </>

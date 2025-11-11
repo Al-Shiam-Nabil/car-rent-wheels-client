@@ -169,7 +169,7 @@ const MyListingPage = () => {
                       className={` ${
                         car?.status === "available"
                           ? "text-green-500"
-                          : "text-red-600"
+                          : "text-red-500"
                       } capitalize`}
                     >
                       {car?.status}
@@ -177,7 +177,7 @@ const MyListingPage = () => {
                     <td className="space-x-1 space-y-1">
                       <button
                         onClick={() => handleUpdateModal(car?._id)}
-                        className="btn w-[70px] h-8 text-secondary"
+                        className="btn w-[70px] h-8 text-secondary "
                       >
                         Update
                       </button>

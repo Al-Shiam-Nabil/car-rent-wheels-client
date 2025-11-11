@@ -8,7 +8,7 @@ const ErrorPage = () => {
 
   return (
     <>
-      <title>ToyTopia - Error</title>
+      <title>Rent wheels - Error</title>
       <Container className="bg-gray-50 h-screen grid place-items-center py-10">
         <div className="text-center">
           <img src={errorImage} alt="Error image" className=" mb-2" />
