@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Container from "../Components/Container/Container";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import Swal from "sweetalert2";
 import { useContextHook } from "../Hooks/useContextHook";
 import LoadingComponent from "../Components/LoadingSpinner/LoadingComponent";
@@ -10,6 +10,12 @@ const CarDetailsPage = () => {
   const { id } = useParams();
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
+
+   const location=useLocation()
+
+  useEffect(()=>{
+    window.scrollTo({top:0,behavior:"smooth"})
+  },[location.pathname])
 
   useEffect(() => {
     fetch(`http://localhost:3000/cars/${id}`)

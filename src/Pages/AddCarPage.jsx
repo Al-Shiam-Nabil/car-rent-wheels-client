@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../Components/Container/Container";
 import { useContextHook } from "../Hooks/useContextHook";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router";
 
 const AddCarPage = () => {
   const { user } = useContextHook();
+  const location=useLocation()
+
+  useEffect(()=>{
+    window.scrollTo({top:0,behavior:"smooth"})
+  },[location.pathname])
 
   const handleAddCar = (e) => {
     e.preventDefault();

@@ -20,6 +20,10 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
+  useEffect(() => {
     if (user) {
       navigate(location?.state ? location?.state : "/");
       return;
@@ -29,11 +33,10 @@ const RegisterPage = () => {
   //   create email password user
   const handleCreateUser = (e) => {
     e.preventDefault();
-    const name = (e.target.name.value).trim().toUpperCase();
+    const name = e.target.name.value.trim().toUpperCase();
     const email = e.target.email.value;
-    const photo = (e.target.photo.value).trim();
+    const photo = e.target.photo.value.trim();
     const password = e.target.password.value;
-
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 

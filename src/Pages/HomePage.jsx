@@ -3,17 +3,24 @@ import SwiperSlider from "../Components/Home/Banner/SwiperSlider";
 import Container from "../Components/Container/Container";
 import LoadingComponent from "../Components/LoadingSpinner/LoadingComponent";
 import CarCard from "../Components/BrowseCar/CarCard";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { FaArrowRight } from "react-icons/fa6";
 import WhyRentUs from "../Components/Home/WhyRentUs/WhyRentUs";
 import TopRatedCar from "../Components/Home/TopRatedCar/TopRatedCar";
 import CustomerTestimonial from "../Components/Home/CustomerTestimonial/CustomerTestimonial";
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
 const HomePage = () => {
   const [cars, setCars] = useState(null);
 
   const [loading, setLoading] = useState(true);
+
+   const location=useLocation()
+
+  useEffect(()=>{
+    window.scrollTo({top:0,behavior:"smooth"})
+  },[location.pathname])
+
   useEffect(() => {
     fetch("http://localhost:3000/latest-cars")
       .then((res) => res.json())

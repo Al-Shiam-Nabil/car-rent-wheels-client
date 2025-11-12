@@ -5,9 +5,8 @@ import Footer from "../Components/Footer/Footer";
 import LoadingPage from "../Components/LoadingSpinner/LoadingPage";
 
 const Root = () => {
-
-  const navigation=useNavigation()
-  const isNavigating=Boolean(navigation.location)
+  const navigation = useNavigation();
+  const isNavigating = Boolean(navigation.location);
   return (
     <div className="flex flex-col min-h-screen">
       <header>

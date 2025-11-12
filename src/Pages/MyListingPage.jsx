@@ -4,6 +4,7 @@ import { useContextHook } from "../Hooks/useContextHook";
 
 import LoadingComponent from "../Components/LoadingSpinner/LoadingComponent";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router";
 
 const MyListingPage = () => {
   const { user } = useContextHook();
@@ -12,6 +13,12 @@ const MyListingPage = () => {
   const [updatedCar, setUpdatedCar] = useState(null);
   const [updatedId, setUpdatedId] = useState(null);
   const updateModalRef = useRef(null);
+
+   const location=useLocation()
+
+  useEffect(()=>{
+    window.scrollTo({top:0,behavior:"smooth"})
+  },[location.pathname])
 
   useEffect(() => {
     fetch(`http://localhost:3000/my-cars?email=${user?.email}`)

@@ -8,19 +8,19 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 const LoginPage = () => {
   const { user, googleLogin, signInUser, setLoading } = useContextHook();
   const [showPassword, setShowPassword] = useState(false);
-  const location=useLocation()
-  const navigate=useNavigate()
-  console.log(location)
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
-  useEffect(()=>{
- if (user) {
-     navigate(location?.state ? location?.state : '/')
-     return
-  }
-  },[location?.state,navigate,user])
-
- 
+  useEffect(() => {
+    if (user) {
+      navigate(location?.state ? location?.state : "/");
+      return;
+    }
+  }, [location?.state, navigate, user]);
 
   //  email password log in
   const handleLogin = (e) => {
@@ -28,7 +28,7 @@ const LoginPage = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log(email)
+    console.log(email);
 
     signInUser(email, password)
       .then((result) => {
@@ -41,7 +41,7 @@ const LoginPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-      
+
         setLoading(false);
       })
       .catch((error) => {
@@ -69,7 +69,7 @@ const LoginPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        
+
         setLoading(false);
       })
       .catch((error) => {

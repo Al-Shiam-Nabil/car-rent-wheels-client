@@ -3,11 +3,19 @@ import Container from "../Components/Container/Container";
 import BookingCard from "../Components/MyBooking/BookingCard";
 import { useContextHook } from "../Hooks/useContextHook";
 import LoadingComponent from "../Components/LoadingSpinner/LoadingComponent";
+import { useLocation } from "react-router";
 
 const MyBookingPage = () => {
   const { user } = useContextHook();
   const [cars, setCars] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
   useEffect(() => {
     fetch(`http://localhost:3000/my-bookings?email=${user?.email}`)
       .then((res) => res.json())
@@ -16,8 +24,6 @@ const MyBookingPage = () => {
         setLoading(false);
       });
   }, [user?.email]);
-
-
 
   return (
     <>
@@ -34,13 +40,11 @@ const MyBookingPage = () => {
             No cars have been booked yet.
           </h3>
         ) : (
-         <div className="mt-10 flex flex-col gap-6">
-         {
-                cars.map((car) => (
-            <BookingCard key={car?._id} car={car}></BookingCard>
-          ))
-         }
-         </div>
+          <div className="mt-10 flex flex-col gap-6">
+            {cars.map((car) => (
+              <BookingCard key={car?._id} car={car}></BookingCard>
+            ))}
+          </div>
         )}
       </Container>
     </>
