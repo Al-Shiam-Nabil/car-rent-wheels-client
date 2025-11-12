@@ -6,7 +6,7 @@ const CustomerTestimonial = () => {
   return (
     <Container>
       <section className="pt-10 pb-20 ">
-        <h2 className="text-3xl font-semibold text-center mb-10">
+        <h2 className="text-xl sm:text-3xl font-semibold text-center mb-10">
           Customer Testimonials
         </h2>
 

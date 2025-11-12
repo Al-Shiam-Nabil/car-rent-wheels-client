@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Container from "../Components/Container/Container";
 import { useContextHook } from "../Hooks/useContextHook";
 import Swal from "sweetalert2";
@@ -8,7 +8,6 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 const RegisterPage = () => {
   const {
     user,
-
     googleLogin,
     createEmailPasswordUser,
     setLoading,
@@ -56,7 +55,6 @@ const RegisterPage = () => {
     }
 
     const updatedInfo = { displayName: name, photoURL: photo };
-    console.log(updatedInfo);
 
     createEmailPasswordUser(email, password)
       .then(() => {
@@ -101,8 +99,7 @@ const RegisterPage = () => {
   // google log in
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         Swal.fire({
           position: "center",
           icon: "success",

@@ -48,10 +48,10 @@ const Navbar = () => {
       <Container className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="mr-3 lg:hidden">
+            <div tabIndex={0} role="button" className="mr-2 sm:mr-3 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-7 w-7"
+                className="sm:h-7 sm:w-7 h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="#FFB51D"
@@ -60,7 +60,7 @@ const Navbar = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="3"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
                 />{" "}
               </svg>
@@ -72,7 +72,7 @@ const Navbar = () => {
               {link}
             </ul>
           </div>
-          <Link to="/" className="font-semibold text-2xl">
+          <Link to="/" className="font-semibold text-xl sm:text-2xl whitespace-nowrap">
             <span className="text-primary">Rent</span>{" "}
             <span className="text-secondary">Wheels</span>
           </Link>
@@ -90,7 +90,7 @@ const Navbar = () => {
                   <img
                     src={user?.photoURL}
                     alt={user?.displayName}
-                    className="w-12 h-12 rounded-full bg-gray-200 cursor-pointer"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 cursor-pointer"
                   />
                 )}
               </div>
@@ -116,7 +116,7 @@ const Navbar = () => {
           ) : (
             <Link to="/login">
               {loading ? (
-                // <div className="skeleton rounded-full h-12 w-12"></div>
+               
                 <div className="skeleton rounded-full w-18 h-10"></div>
               ) : (
                 <button className="btn btn-primary text-secondary rounded-full outline-none border-none shadow-none hover:btn-secondary hover:text-white">

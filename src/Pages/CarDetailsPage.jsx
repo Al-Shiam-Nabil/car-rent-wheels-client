@@ -11,11 +11,11 @@ const CarDetailsPage = () => {
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
 
-   const location=useLocation()
+  const location = useLocation();
 
-  useEffect(()=>{
-    window.scrollTo({top:0,behavior:"smooth"})
-  },[location.pathname])
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   useEffect(() => {
     fetch(`http://localhost:3000/cars/${id}`)
@@ -41,7 +41,6 @@ const CarDetailsPage = () => {
         booked_at: new Date(),
       },
     };
-    console.log(updatedStatus);
 
     fetch(`http://localhost:3000/cars/${id}`, {
       method: "PATCH",
@@ -52,8 +51,6 @@ const CarDetailsPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("after booking", data);
-
         car.status = "booked";
         setCar({ ...car });
 

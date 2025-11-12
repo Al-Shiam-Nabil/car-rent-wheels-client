@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const BookingCard = ({ car }) => {
-  console.log(car);
+
   const { _id, car_name, photo_url, category, location, price_per_day } = car;
   return (
     <div className="flex flex-col sm:flex-row gap-5 items-center bg-white p-5 rounded-xl shadow-sm">

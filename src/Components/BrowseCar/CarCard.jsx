@@ -67,7 +67,7 @@ const CarCard = ({ car }) => {
           {category}
         </div>
         <div>
-          <h3 className="text-sm font-medium">Provider Name </h3>
+          <h3 className="text-sm font-medium mb-1">Provider Name </h3>
           <p className="text-sm capitalize truncate">{provider_name}</p>
         </div>
         <Link to={`/car-details/${_id}`}>

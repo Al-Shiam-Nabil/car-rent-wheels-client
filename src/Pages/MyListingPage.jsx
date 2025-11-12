@@ -61,7 +61,6 @@ const MyListingPage = () => {
       description,
     };
 
-    console.log(cars);
 
     fetch(`http://localhost:3000/cars/${updatedId}`, {
       method: "PATCH",
@@ -72,7 +71,7 @@ const MyListingPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("after update", data);
+       
         updateModalRef.current.close();
         if (data.modifiedCount === 1) {
           const existingCars = cars.filter((e) => e._id !== updatedId);
@@ -123,7 +122,7 @@ const MyListingPage = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("afterDelete", data);
+         
             if (data?.deletedCount === 1) {
               const remainingCars = cars.filter((e) => e._id !== id);
               setCars(remainingCars);

@@ -28,11 +28,8 @@ const LoginPage = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log(email);
-
     signInUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         e.target.reset();
         Swal.fire({
           position: "center",
@@ -60,8 +57,7 @@ const LoginPage = () => {
   //  google log in
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         Swal.fire({
           position: "center",
           icon: "success",

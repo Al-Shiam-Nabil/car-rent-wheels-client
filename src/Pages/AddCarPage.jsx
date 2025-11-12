@@ -6,11 +6,11 @@ import { useLocation } from "react-router";
 
 const AddCarPage = () => {
   const { user } = useContextHook();
-  const location=useLocation()
+  const location = useLocation();
 
-  useEffect(()=>{
-    window.scrollTo({top:0,behavior:"smooth"})
-  },[location.pathname])
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   const handleAddCar = (e) => {
     e.preventDefault();
@@ -32,31 +32,30 @@ const AddCarPage = () => {
       description,
       provider_name,
       provider_email,
-      status:'available',
-      create_at: new Date()
+      status: "available",
+      create_at: new Date(),
     };
 
     fetch("http://localhost:3000/cars", {
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(carInfo)
+      body: JSON.stringify(carInfo),
     })
       .then((res) => {
-       return res.json();
+        return res.json();
       })
       .then((data) => {
-        console.log("after add car", data);
-        if(data.insertedId){
+        if (data.insertedId) {
           Swal.fire({
-  position: "center",
-  icon: "success",
-  title: "New car added successfully.",
-  showConfirmButton: false,
-  timer: 1500
-});
-e.target.reset()
+            position: "center",
+            icon: "success",
+            title: "New car added successfully.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          e.target.reset();
         }
       });
   };

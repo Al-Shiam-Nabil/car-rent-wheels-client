@@ -30,7 +30,7 @@ const MyBookingPage = () => {
       <title>Rent Wheels - My Bookings</title>
       <Container className="pt-10 pb-20">
         <h2 className="text-center text-2xl sm:text-3xl font-semibold ">
-          My booking Cars
+          My booked Cars
         </h2>
 
         {loading ? (

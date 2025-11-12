@@ -58,7 +58,7 @@ const HomePage = () => {
       <Container>
         {/* featured cars */}
         <div className="mt-20 mb-10">
-          <h2 className="text-center text-3xl font-semibold ">Featured Cars</h2>
+          <h2 className="text-center text-xl sm:text-3xl font-semibold ">Featured Cars</h2>
           {/* search */}
           <form onSubmit={handleSearch} className="flex justify-center  mt-10 ">
             <div className="relative h-[45px]">
@@ -67,7 +67,7 @@ const HomePage = () => {
                 name="search"
                 placeholder="Search By Name..."
                 spellCheck={false}
-                className="bg-gray-200 w-[400px] px-5 pr-24 py-2 rounded-4xl h-full outline-none "
+                className="bg-gray-200 w-full sm:w-[400px] px-5 pr-24 py-2 rounded-4xl h-full outline-none "
                 required
               />
               <button

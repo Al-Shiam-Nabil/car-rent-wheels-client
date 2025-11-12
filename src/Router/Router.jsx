@@ -11,7 +11,6 @@ import BrowseCarPage from "../Pages/BrowseCarPage";
 import CarDetailsPage from "../Pages/CarDetailsPage";
 import MyBookingPage from "../Pages/MyBookingPage";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,17 +46,25 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:'browse-cars',
-        Component:BrowseCarPage
-      }
-      ,{
-        path:"car-details/:id",
-        element:<PrivateRoute><CarDetailsPage></CarDetailsPage></PrivateRoute>
-      }
-      ,{
-        path:"my-bookings",
-        element:<PrivateRoute><MyBookingPage></MyBookingPage></PrivateRoute>
-      }
+        path: "browse-cars",
+        Component: BrowseCarPage,
+      },
+      {
+        path: "car-details/:id",
+        element: (
+          <PrivateRoute>
+            <CarDetailsPage></CarDetailsPage>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-bookings",
+        element: (
+          <PrivateRoute>
+            <MyBookingPage></MyBookingPage>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
