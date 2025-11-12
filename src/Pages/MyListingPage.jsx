@@ -163,7 +163,7 @@ const MyListingPage = () => {
                     <td>{index + 1}</td>
                     <td className=" capitalize">{car?.car_name}</td>
                     <td className=" capitalize">{car?.category}</td>
-                    <td>{car?.price_per_day}</td>
+                    <td>{car?.price_per_day} Tk</td>
 
                     <td
                       className={` ${

@@ -7,6 +7,7 @@ import { Link } from "react-router";
 import { FaArrowRight } from "react-icons/fa6";
 import WhyRentUs from "../Components/Home/WhyRentUs/WhyRentUs";
 import TopRatedCar from "../Components/Home/TopRatedCar/TopRatedCar";
+import CustomerTestimonial from "../Components/Home/CustomerTestimonial/CustomerTestimonial";
 
 const HomePage = () => {
   const [cars, setCars] = useState(null);
@@ -74,6 +75,9 @@ const HomePage = () => {
 
         {/* Top rated cars */}
         <TopRatedCar></TopRatedCar>
+
+        {/* customer Testimonials */}
+        <CustomerTestimonial></CustomerTestimonial>
 
     </>
   );

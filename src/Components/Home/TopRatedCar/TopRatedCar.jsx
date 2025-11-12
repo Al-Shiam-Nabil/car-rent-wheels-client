@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const TopRatedCar = () => {
   return (
-    <Container className="py-10 bg-white">
+    <Container className="py-20 bg-white">
       <div className="flex flex-col lg:flex-row justify-center items-center gap-10">
         <div
           className="hero h-[400px] mx-auto rounded-4xl w-full lg:w-1/2 "
