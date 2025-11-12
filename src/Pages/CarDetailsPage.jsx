@@ -18,7 +18,7 @@ const CarDetailsPage = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/cars/${id}`)
+    fetch(`https://car-rent-wheels-server.vercel.app/cars/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCar(data);
@@ -42,7 +42,7 @@ const CarDetailsPage = () => {
       },
     };
 
-    fetch(`http://localhost:3000/cars/${id}`, {
+    fetch(`https://car-rent-wheels-server.vercel.app/cars/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

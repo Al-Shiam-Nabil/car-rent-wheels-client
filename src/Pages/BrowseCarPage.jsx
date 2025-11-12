@@ -8,14 +8,14 @@ const BrowseCarPage = () => {
   const [allCars, setAllCars] = useState(null);
   const [loading, setLoading] = useState(true);
 
-   const location=useLocation()
-
-  useEffect(()=>{
-    window.scrollTo({top:0,behavior:"smooth"})
-  },[location.pathname])
+  const location = useLocation();
 
   useEffect(() => {
-    fetch("http://localhost:3000/cars")
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
+  useEffect(() => {
+    fetch("https://car-rent-wheels-server.vercel.app/cars")
       .then((res) => res.json())
       .then((data) => {
         setAllCars(data);

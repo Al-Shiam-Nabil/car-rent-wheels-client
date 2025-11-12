@@ -21,7 +21,9 @@ const MyListingPage = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-cars?email=${user?.email}`)
+    fetch(
+      `https://car-rent-wheels-server.vercel.app/my-cars?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCars(data);
@@ -32,7 +34,7 @@ const MyListingPage = () => {
   const handleUpdateModal = (id) => {
     updateModalRef.current.showModal();
 
-    fetch(`http://localhost:3000/cars/${id}`)
+    fetch(`https://car-rent-wheels-server.vercel.app/cars/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setUpdatedCar(data);
@@ -61,7 +63,7 @@ const MyListingPage = () => {
       description,
     };
 
-    fetch(`http://localhost:3000/cars/${updatedId}`, {
+    fetch(`https://car-rent-wheels-server.vercel.app/cars/${updatedId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -112,7 +114,7 @@ const MyListingPage = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/cars/${id}`, {
+        fetch(`https://car-rent-wheels-server.vercel.app/cars/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

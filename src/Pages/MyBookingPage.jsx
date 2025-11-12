@@ -17,7 +17,9 @@ const MyBookingPage = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-bookings?email=${user?.email}`)
+    fetch(
+      `https://car-rent-wheels-server.vercel.app/my-bookings?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCars(data);

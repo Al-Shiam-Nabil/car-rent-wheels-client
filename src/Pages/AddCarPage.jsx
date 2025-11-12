@@ -36,7 +36,7 @@ const AddCarPage = () => {
       create_at: new Date(),
     };
 
-    fetch("http://localhost:3000/cars", {
+    fetch("https://car-rent-wheels-server.vercel.app/cars", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

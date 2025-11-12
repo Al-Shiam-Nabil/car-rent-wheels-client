@@ -15,14 +15,14 @@ const HomePage = () => {
 
   const [loading, setLoading] = useState(true);
 
-   const location=useLocation()
-
-  useEffect(()=>{
-    window.scrollTo({top:0,behavior:"smooth"})
-  },[location.pathname])
+  const location = useLocation();
 
   useEffect(() => {
-    fetch("http://localhost:3000/latest-cars")
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
+  useEffect(() => {
+    fetch("https://car-rent-wheels-server.vercel.app/latest-cars")
       .then((res) => res.json())
       .then((data) => {
         setCars(data);
@@ -38,7 +38,7 @@ const HomePage = () => {
       return;
     }
 
-    fetch(`http://localhost:3000/search?search=${search}`)
+    fetch(`https://car-rent-wheels-server.vercel.app/search?search=${search}`)
       .then((res) => res.json())
       .then((data) => {
         setCars(data);
@@ -58,7 +58,9 @@ const HomePage = () => {
       <Container>
         {/* featured cars */}
         <div className="mt-20 mb-10">
-          <h2 className="text-center text-xl sm:text-3xl font-semibold ">Featured Cars</h2>
+          <h2 className="text-center text-xl sm:text-3xl font-semibold ">
+            Featured Cars
+          </h2>
           {/* search */}
           <form onSubmit={handleSearch} className="flex justify-center  mt-10 ">
             <div className="relative h-[45px]">
