@@ -35,7 +35,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-  
         setLoading(false);
         setUser(currentUser);
       }
@@ -46,11 +45,11 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const updateUserProfile=(updatedData)=>{
-    setLoading(true)
-   
-    return updateProfile(auth.currentUser,updatedData)
-  }
+  const updateUserProfile = (updatedData) => {
+    setLoading(true);
+
+    return updateProfile(auth.currentUser, updatedData);
+  };
 
   //   signout user
 
@@ -68,7 +67,7 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     signOutUser,
-    updateUserProfile
+    updateUserProfile,
   };
   return <AuthContext value={info}>{children}</AuthContext>;
 };

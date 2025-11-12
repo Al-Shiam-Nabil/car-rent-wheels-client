@@ -25,7 +25,7 @@ const Navbar = () => {
           icon: "success",
           title: "You have logged out successfully.",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
         setLoading(false);
         setUser(null);
@@ -37,7 +37,7 @@ const Navbar = () => {
           icon: "error",
           title: `${error.code}`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
         setLoading(false);
       });
@@ -72,7 +72,10 @@ const Navbar = () => {
               {link}
             </ul>
           </div>
-          <Link to="/" className="font-semibold text-xl sm:text-2xl whitespace-nowrap">
+          <Link
+            to="/"
+            className="font-semibold text-xl sm:text-2xl whitespace-nowrap"
+          >
             <span className="text-primary">Rent</span>{" "}
             <span className="text-secondary">Wheels</span>
           </Link>
@@ -116,7 +119,6 @@ const Navbar = () => {
           ) : (
             <Link to="/login">
               {loading ? (
-               
                 <div className="skeleton rounded-full w-18 h-10"></div>
               ) : (
                 <button className="btn btn-primary text-secondary rounded-full outline-none border-none shadow-none hover:btn-secondary hover:text-white">

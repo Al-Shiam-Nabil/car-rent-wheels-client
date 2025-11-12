@@ -22,17 +22,15 @@ const SwiperSlider = () => {
       slidesPerView={1}
       pagination={{ clickable: true }}
     >
-     
-        <SwiperSlide>
-          <Slider1></Slider1>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Slider2></Slider2>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Slider3></Slider3>
-        </SwiperSlide>
-     
+      <SwiperSlide>
+        <Slider1></Slider1>
+      </SwiperSlide>
+      <SwiperSlide>
+        <Slider2></Slider2>
+      </SwiperSlide>
+      <SwiperSlide>
+        <Slider3></Slider3>
+      </SwiperSlide>
     </Swiper>
   );
 };

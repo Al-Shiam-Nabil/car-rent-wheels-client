@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 
 const BookingCard = ({ car }) => {
-
   const { _id, car_name, photo_url, category, location, price_per_day } = car;
   return (
     <div className="flex flex-col sm:flex-row gap-5 items-center bg-white p-5 rounded-xl shadow-sm">
@@ -19,7 +18,10 @@ const BookingCard = ({ car }) => {
           <div className="flex gap-y-1 gap-x-5 flex-col ">
             <h3 className="text-sm font-medium">
               Rent Price :
-              <span className="font-normal truncate"> {price_per_day} Tk /day</span>
+              <span className="font-normal truncate">
+                {" "}
+                {price_per_day} Tk /day
+              </span>
             </h3>
 
             <h3 className="text-sm font-medium capitalize truncate">

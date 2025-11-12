@@ -8,17 +8,16 @@ const TopRatedCar = () => {
   return (
     <Container className="py-20 bg-white">
       <motion.div
-        initial={{ opacity: 0,y:100 }}
-        whileInView={{ opacity: 1 ,y:0}}
-        transition={{duration:.5}}
-        viewport={{amount:0}}
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ amount: 0 }}
         className="flex flex-col lg:flex-row justify-center items-center gap-10"
       >
         <div
           className="hero  h-[400px] mx-auto  w-full lg:w-1/2 "
           style={{
-            backgroundImage:
-              "url(https://i.ibb.co/Pv082Bb9/to-Rated-Car.jpg)",
+            backgroundImage: "url(https://i.ibb.co/Pv082Bb9/to-Rated-Car.jpg)",
           }}
         >
           <div className="hero-overlay"></div>

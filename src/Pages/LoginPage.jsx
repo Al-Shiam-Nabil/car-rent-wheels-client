@@ -36,7 +36,7 @@ const LoginPage = () => {
           icon: "success",
           title: "You have logged in successfully.",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
 
         setLoading(false);
@@ -48,7 +48,7 @@ const LoginPage = () => {
           icon: "error",
           title: `${error.code}`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
         setLoading(false);
       });
@@ -63,7 +63,7 @@ const LoginPage = () => {
           icon: "success",
           title: "You have logged in successfully.",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
 
         setLoading(false);
@@ -75,7 +75,7 @@ const LoginPage = () => {
           icon: "error",
           title: `${error.code}`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
         setLoading(false);
       });

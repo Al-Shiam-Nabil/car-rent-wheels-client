@@ -14,11 +14,11 @@ const MyListingPage = () => {
   const [updatedId, setUpdatedId] = useState(null);
   const updateModalRef = useRef(null);
 
-   const location=useLocation()
+  const location = useLocation();
 
-  useEffect(()=>{
-    window.scrollTo({top:0,behavior:"smooth"})
-  },[location.pathname])
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   useEffect(() => {
     fetch(`http://localhost:3000/my-cars?email=${user?.email}`)
@@ -61,7 +61,6 @@ const MyListingPage = () => {
       description,
     };
 
-
     fetch(`http://localhost:3000/cars/${updatedId}`, {
       method: "PATCH",
       headers: {
@@ -71,7 +70,6 @@ const MyListingPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-       
         updateModalRef.current.close();
         if (data.modifiedCount === 1) {
           const existingCars = cars.filter((e) => e._id !== updatedId);
@@ -88,7 +86,7 @@ const MyListingPage = () => {
             icon: "success",
             title: "Updated Successfully",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 2000,
           });
         }
         if (data.modifiedCount === 0) {
@@ -97,7 +95,7 @@ const MyListingPage = () => {
             icon: "success",
             title: "Nothing Updated",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 2000,
           });
         }
       });
@@ -122,7 +120,6 @@ const MyListingPage = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-         
             if (data?.deletedCount === 1) {
               const remainingCars = cars.filter((e) => e._id !== id);
               setCars(remainingCars);
@@ -136,8 +133,6 @@ const MyListingPage = () => {
       }
     });
   };
-
- 
 
   return (
     <>
@@ -220,6 +215,7 @@ const MyListingPage = () => {
                   defaultValue={updatedCar?.car_name}
                   name="car_name"
                   spellCheck={false}
+                  required
                 />
 
                 {/* description */}
@@ -265,6 +261,7 @@ const MyListingPage = () => {
                   className="input shadow-none bg-gray-100 border-none outline-none "
                   placeholder="Enter Rent Price..."
                   name="price_per_day"
+                  required
                 />
 
                 {/* location */}
@@ -279,6 +276,7 @@ const MyListingPage = () => {
                   placeholder="Enter Location..."
                   name="location"
                   spellCheck={false}
+                  required
                 />
 
                 {/* image url */}
@@ -294,6 +292,7 @@ const MyListingPage = () => {
                   placeholder="Enter PhotoURL..."
                   name="photo_url"
                   spellCheck={false}
+                  required
                 />
 
                 {/* provider name */}

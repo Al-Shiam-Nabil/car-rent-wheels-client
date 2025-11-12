@@ -48,7 +48,7 @@ const RegisterPage = () => {
         icon: "error",
         title: "Invalid Password !",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2000,
       });
     } else {
       setError(null);
@@ -66,7 +66,7 @@ const RegisterPage = () => {
               icon: "success",
               title: "You have create account successfully.",
               showConfirmButton: false,
-              timer: 1500,
+              timer: 2000,
             });
 
             setLoading(false);
@@ -78,7 +78,7 @@ const RegisterPage = () => {
               icon: "error",
               title: `${error.code}`,
               showConfirmButton: false,
-              timer: 1500,
+              timer: 2000,
             });
             setLoading(false);
           });
@@ -90,7 +90,7 @@ const RegisterPage = () => {
           icon: "error",
           title: `${error.code}`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
         setLoading(false);
       });
@@ -105,7 +105,7 @@ const RegisterPage = () => {
           icon: "success",
           title: "You have logged in successfully.",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
 
         setLoading(false);
@@ -117,7 +117,7 @@ const RegisterPage = () => {
           icon: "error",
           title: `${error.code}`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
         setLoading(false);
       });
@@ -144,6 +144,7 @@ const RegisterPage = () => {
                   className="input shadow-none bg-gray-100 border-none outline-none w-full"
                   placeholder="Name"
                   name="name"
+                  spellCheck={false}
                   required
                 />
                 {/* email */}

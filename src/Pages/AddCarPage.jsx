@@ -53,7 +53,7 @@ const AddCarPage = () => {
             icon: "success",
             title: "New car added successfully.",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 2000,
           });
           e.target.reset();
         }
@@ -83,6 +83,7 @@ const AddCarPage = () => {
               placeholder="Enter Car Name..."
               name="car_name"
               spellCheck={false}
+              required
             />
 
             {/* description */}
@@ -126,6 +127,7 @@ const AddCarPage = () => {
               className="input shadow-none bg-gray-100 border-none outline-none "
               placeholder="Enter Rent Price..."
               name="price_per_day"
+              required
             />
 
             {/* location */}
@@ -139,6 +141,7 @@ const AddCarPage = () => {
               placeholder="Enter Location..."
               name="location"
               spellCheck={false}
+              required
             />
 
             {/* image url */}
@@ -153,6 +156,7 @@ const AddCarPage = () => {
               placeholder="Enter PhotoURL..."
               name="photo_url"
               spellCheck={false}
+              required
             />
 
             {/* provider name */}

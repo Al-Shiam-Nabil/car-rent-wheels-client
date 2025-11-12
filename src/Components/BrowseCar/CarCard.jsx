@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { Tooltip } from "react-tooltip";
 import { motion } from "motion/react";
 
-
 const CarCard = ({ car }) => {
   const {
     _id,

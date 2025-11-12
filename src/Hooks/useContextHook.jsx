@@ -11,7 +11,7 @@ export const useContextHook = () => {
     loading,
     setLoading,
     signOutUser,
-    updateUserProfile
+    updateUserProfile,
   } = useContext(AuthContext);
   return {
     googleLogin,
@@ -22,6 +22,6 @@ export const useContextHook = () => {
     loading,
     setLoading,
     signOutUser,
-    updateUserProfile
+    updateUserProfile,
   };
 };

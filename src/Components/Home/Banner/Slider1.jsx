@@ -11,7 +11,7 @@ const Slider1 = () => {
       <div className="absolute inset-0 bg-linear-to-b from-black/60 to-black/30"></div>
 
       <div className="absolute inset-0 grid place-items-center">
-        <Container >
+        <Container>
           <h2 className="text-4xl sm:text-6xl text-white/90 font-bold">
             <Typewriter
               options={{

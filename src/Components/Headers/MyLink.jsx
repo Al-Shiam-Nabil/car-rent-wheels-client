@@ -3,16 +3,18 @@ import { NavLink } from "react-router";
 
 const MyLink = ({ children, className, to }) => {
   return (
-  <li>
+    <li>
       <NavLink
-      to={to}
-      className={({ isActive }) =>
-        isActive ? "text-secondary font-semibold text-base hover:text-primary" : `hover:text-primary text-base ${className}`
-      }
-    >
-      {children}
-    </NavLink>
-  </li>
+        to={to}
+        className={({ isActive }) =>
+          isActive
+            ? "text-secondary font-semibold text-base hover:text-primary"
+            : `hover:text-primary text-base ${className}`
+        }
+      >
+        {children}
+      </NavLink>
+    </li>
   );
 };
 
