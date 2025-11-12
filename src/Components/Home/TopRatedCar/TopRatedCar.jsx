@@ -7,7 +7,7 @@ const TopRatedCar = () => {
     <Container className="py-20 bg-white">
       <div className="flex flex-col lg:flex-row justify-center items-center gap-10">
         <div
-          className="hero h-[400px] mx-auto rounded-4xl w-full lg:w-1/2 "
+          className="hero  h-[400px] mx-auto  w-full lg:w-1/2 "
           style={{
             backgroundImage:
               "url(https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500)",

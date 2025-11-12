@@ -13,7 +13,6 @@ const CarCard = ({ car }) => {
     status,
   } = car;
 
-  console.log(car);
   return (
     <div className="bg-white shadow-sm p-5 rounded-xl space-y-2 w-full">
       <div className="w-full h-[250px] sm:h-[200px] rounded-xl mb-3 relative">

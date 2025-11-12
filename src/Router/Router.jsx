@@ -9,6 +9,7 @@ import PrivateRoute from "../AuthContext/PrivateRoute";
 import MyListingPage from "../Pages/MyListingPage";
 import BrowseCarPage from "../Pages/BrowseCarPage";
 import CarDetailsPage from "../Pages/CarDetailsPage";
+import MyBookingPage from "../Pages/MyBookingPage";
 
 
 const router = createBrowserRouter([
@@ -53,7 +54,10 @@ const router = createBrowserRouter([
         path:"car-details/:id",
         element:<PrivateRoute><CarDetailsPage></CarDetailsPage></PrivateRoute>
       }
-     
+      ,{
+        path:"my-bookings",
+        element:<PrivateRoute><MyBookingPage></MyBookingPage></PrivateRoute>
+      }
     ],
   },
 ]);

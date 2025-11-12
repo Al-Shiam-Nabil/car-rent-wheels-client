@@ -22,7 +22,7 @@ const BrowseCarPage = () => {
       <title>Rent Wheels - Browse Cars</title>
 
       <Container className="pt-10 pb-20">
-        <h2 className="text-center text-3xl font-semibold ">All Cars</h2>
+        <h2 className="text-center text-2xl sm:text-3xl font-semibold ">All Cars</h2>
 
         {loading ? (
           <LoadingComponent></LoadingComponent>
