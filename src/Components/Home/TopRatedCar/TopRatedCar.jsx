@@ -2,10 +2,18 @@ import React from "react";
 import Container from "../../Container/Container";
 import { Link } from "react-router";
 
+import { motion } from "motion/react";
+
 const TopRatedCar = () => {
   return (
     <Container className="py-20 bg-white">
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-10">
+      <motion.div
+        initial={{ opacity: 0,y:100 }}
+        whileInView={{ opacity: 1 ,y:0}}
+        transition={{duration:.5}}
+        viewport={{amount:0}}
+        className="flex flex-col lg:flex-row justify-center items-center gap-10"
+      >
         <div
           className="hero  h-[400px] mx-auto  w-full lg:w-1/2 "
           style={{
@@ -25,9 +33,12 @@ const TopRatedCar = () => {
                 Quality, comfort, and reliability — experience top-rated rides
                 only.
               </p>
-             <Link to="/browse-cars"> <button className="btn btn-primary shadow-none text-secondary">
-                Explore Now
-              </button></Link>
+              <Link to="/browse-cars">
+                {" "}
+                <button className="btn btn-primary shadow-none text-secondary">
+                  Explore Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -54,7 +65,7 @@ const TopRatedCar = () => {
             each vehicle is maintained to perfection and ready to hit the road.
           </p>
         </div>
-      </div>
+      </motion.div>
     </Container>
   );
 };

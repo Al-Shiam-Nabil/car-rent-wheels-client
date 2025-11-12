@@ -8,9 +8,11 @@ import { FaArrowRight } from "react-icons/fa6";
 import WhyRentUs from "../Components/Home/WhyRentUs/WhyRentUs";
 import TopRatedCar from "../Components/Home/TopRatedCar/TopRatedCar";
 import CustomerTestimonial from "../Components/Home/CustomerTestimonial/CustomerTestimonial";
+import { motion } from "motion/react"
 
 const HomePage = () => {
   const [cars, setCars] = useState(null);
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch("http://localhost:3000/latest-cars")
@@ -21,7 +23,22 @@ const HomePage = () => {
       });
   }, []);
 
-  console.log(cars);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const search = e.target.search.value.trim();
+
+    if (search.length === 0) {
+      return;
+    }
+
+    fetch(`http://localhost:3000/search?search=${search}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCars(data);
+        setLoading(false);
+        e.target.reset();
+      });
+  };
 
   return (
     <>
@@ -34,9 +51,26 @@ const HomePage = () => {
       <Container>
         {/* featured cars */}
         <div className="mt-20 mb-10">
-          <h2 className="text-center text-3xl font-semibold ">
-            Featured Cars
-          </h2>
+          <h2 className="text-center text-3xl font-semibold ">Featured Cars</h2>
+          {/* search */}
+          <form onSubmit={handleSearch} className="flex justify-center  mt-10 ">
+            <div className="relative h-[45px]">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search By Name..."
+                spellCheck={false}
+                className="bg-gray-200 w-[400px] px-5 pr-24 py-2 rounded-4xl h-full outline-none "
+                required
+              />
+              <button
+                type="submit"
+                className="btn btn-secondary  text-white shadow-none rounded-br-4xl rounded-tr-4xl absolute top-0 right-0 h-full"
+              >
+                Search
+              </button>
+            </div>
+          </form>
 
           {loading ? (
             <LoadingComponent></LoadingComponent>
@@ -46,39 +80,33 @@ const HomePage = () => {
             </h3>
           ) : (
             <>
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-8 pt-10">
-              {" "}
-              {cars.map((car) => (
-                <CarCard key={car._id} car={car}></CarCard>
-              ))}
-
- 
-
-            </div>
-           <div className="text-center mt-10">
-             <Link to="/browse-cars" className="inline-flex btn btn-outline btn-secondary items-center gap-1 shadow-none">View All Cars <FaArrowRight></FaArrowRight></Link>
-           </div>
-            
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-8 pt-10">
+                {" "}
+                {cars.map((car) => (
+                  <CarCard key={car._id} car={car}></CarCard>
+                ))}
+              </div>
+              <div className="text-center mt-10">
+                <Link
+                  to="/browse-cars"
+                  className="inline-flex btn btn-outline btn-secondary items-center gap-1 shadow-none"
+                >
+                  View All Cars <FaArrowRight></FaArrowRight>
+                </Link>
+              </div>
             </>
           )}
-
-         
         </div>
-
-     
-
-         
       </Container>
 
-   {/* why rent us */}
-        <WhyRentUs></WhyRentUs>
+      {/* why rent us */}
+      <WhyRentUs></WhyRentUs>
 
-        {/* Top rated cars */}
-        <TopRatedCar></TopRatedCar>
+      {/* Top rated cars */}
+      <TopRatedCar></TopRatedCar>
 
-        {/* customer Testimonials */}
-        <CustomerTestimonial></CustomerTestimonial>
-
+      {/* customer Testimonials */}
+      <CustomerTestimonial></CustomerTestimonial>
     </>
   );
 };

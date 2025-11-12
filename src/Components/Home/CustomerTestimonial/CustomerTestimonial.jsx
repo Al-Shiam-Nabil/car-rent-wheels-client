@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../../Container/Container";
+import { motion } from "motion/react";
 
 const CustomerTestimonial = () => {
   return (
@@ -9,7 +10,13 @@ const CustomerTestimonial = () => {
           Customer Testimonials
         </h2>
 
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-3 w-full mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ amount: 0 }}
+          className="grid gap-8 grid-cols-1 md:grid-cols-3 w-full mx-auto"
+        >
           {/* Card 1 */}
           <div className="bg-white rounded-xl shadow-md p-6 ">
             <p className="text-primary text-2xl mb-1">★★★★★</p>
@@ -87,7 +94,7 @@ const CustomerTestimonial = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </Container>
   );

@@ -15,14 +15,14 @@ const BookingCard = ({ car }) => {
       </div>
       <div className="flex justify-between flex-col sm:flex-row gap-5 sm:items-center w-full">
         <div className="flex flex-col gap-2">
-          <h3 className="font-semibold">{car_name}</h3>
-          <div className="flex gap-y-1 gap-x-5 flex-col lg:flex-row lg:items-center">
+          <h3 className="font-semibold capitalize truncate">{car_name}</h3>
+          <div className="flex gap-y-1 gap-x-5 flex-col ">
             <h3 className="text-sm font-medium">
               Rent Price :
-              <span className="font-normal"> {price_per_day} Tk /day</span>
+              <span className="font-normal truncate"> {price_per_day} Tk /day</span>
             </h3>
 
-            <h3 className="text-sm font-medium">
+            <h3 className="text-sm font-medium capitalize truncate">
               Location :<span className="font-normal"> {location}</span>
             </h3>
 
@@ -34,7 +34,7 @@ const BookingCard = ({ car }) => {
 
         <Link to={`/car-details/${_id}`}>
           {" "}
-          <button className="btn border-none outline-none shadow-none hover:btn-primary hover:text-secondary btn-secondary w-full mt-1">
+          <button className="btn btn-secondary btn-outline">
             View Details
           </button>
         </Link>

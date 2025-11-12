@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../../Container/Container";
+import { motion } from "motion/react";
 
 const WhyRentUs = () => {
   return (
@@ -9,7 +10,13 @@ const WhyRentUs = () => {
           Why Rent With Us
         </h2>
 
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  sm:gap-x-10 lg:gap-x-5 gap-y-12 mt-20 mb-10 text-white">
+        <motion.div
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ amount: 0 }}
+          className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  sm:gap-x-10 lg:gap-x-5 gap-y-12 mt-20 mb-10 text-white"
+        >
           <div className=" rounded-xl p-5 space-y-3 bg-[#131222] relative">
             <div className="flex gap-2 justify-center items-center text-4xl font-bold  ">
               <span className="border-10 border-white text-[#131222]  bg-primary rounded-full w-20 h-20 grid place-items-center absolute -top-10">
@@ -70,7 +77,7 @@ const WhyRentUs = () => {
               resolution.
             </p>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </div>
   );
