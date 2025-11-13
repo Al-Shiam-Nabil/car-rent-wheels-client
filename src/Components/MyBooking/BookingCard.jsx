@@ -34,11 +34,12 @@ const BookingCard = ({ car }) => {
           </div>
         </div>
 
-        <Link to={`/car-details/${_id}`}>
+        <Link
+          to={`/car-details/${_id}`}
+          className=" btn btn-secondary btn-outline shadow-none w-[140px] sm:w-auto"
+        >
           {" "}
-          <button className="btn btn-secondary btn-outline shadow-none">
-            View Details
-          </button>
+          View Details
         </Link>
       </div>
     </div>
