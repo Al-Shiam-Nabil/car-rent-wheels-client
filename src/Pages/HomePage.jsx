@@ -8,7 +8,8 @@ import { FaArrowRight } from "react-icons/fa6";
 import WhyRentUs from "../Components/Home/WhyRentUs/WhyRentUs";
 import TopRatedCar from "../Components/Home/TopRatedCar/TopRatedCar";
 import CustomerTestimonial from "../Components/Home/CustomerTestimonial/CustomerTestimonial";
-import { motion } from "motion/react";
+
+import QandA from "../Components/Home/QandA/QandA";
 
 const HomePage = () => {
   const [cars, setCars] = useState(null);
@@ -62,8 +63,8 @@ const HomePage = () => {
             Featured Cars
           </h2>
           {/* search */}
-          <form onSubmit={handleSearch} className="flex justify-center  mt-10 ">
-            <div className="relative h-[45px]">
+          <form onSubmit={handleSearch} className="flex justify-center  mt-12 ">
+            <div className="relative h-[45px] mb-8">
               <input
                 type="text"
                 name="search"
@@ -74,7 +75,7 @@ const HomePage = () => {
               />
               <button
                 type="submit"
-                className="btn btn-secondary  text-white shadow-none rounded-br-4xl rounded-tr-4xl absolute top-0 right-0 h-full"
+                className="btn bg-gray-200 hover:bg-gray-300  text-secondary shadow-none rounded-br-4xl rounded-tr-4xl absolute top-0 right-0 h-full"
               >
                 Search
               </button>
@@ -116,6 +117,9 @@ const HomePage = () => {
 
       {/* customer Testimonials */}
       <CustomerTestimonial></CustomerTestimonial>
+
+      {/* question and answer  */}
+      <QandA></QandA>
     </>
   );
 };

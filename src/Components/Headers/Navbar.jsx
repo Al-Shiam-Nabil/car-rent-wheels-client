@@ -101,7 +101,7 @@ const Navbar = () => {
                 tabIndex="-1"
                 className="dropdown-content  bg-gray-600 text-white space-y-2.5 rounded-box z-200 min-w-52 p-3 shadow-sm"
               >
-                <li className="text-nowrap text-sm">{user?.displayName}</li>
+                <li className="text-nowrap text-sm capitalize">{user?.displayName}</li>
                 <li className="text-nowrap text-sm">{user?.email}</li>
                 <li>
                   <Link>

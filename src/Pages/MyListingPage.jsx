@@ -6,6 +6,8 @@ import LoadingComponent from "../Components/LoadingSpinner/LoadingComponent";
 import Swal from "sweetalert2";
 import { useLocation } from "react-router";
 
+import ModalLoading from "../Components/LoadingSpinner/ModalLoading";
+
 const MyListingPage = () => {
   const { user } = useContextHook();
   const [cars, setCars] = useState(null);
@@ -33,11 +35,12 @@ const MyListingPage = () => {
 
   const handleUpdateModal = (id) => {
     updateModalRef.current.showModal();
-
+    setLoading(true);
     fetch(`https://car-rent-wheels-server.vercel.app/cars/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setUpdatedCar(data);
+
         setLoading(false);
       });
 
@@ -83,6 +86,7 @@ const MyListingPage = () => {
           update.description = description;
           update.photo_url = photo_url;
           setCars([update, ...existingCars]);
+
           Swal.fire({
             position: "center",
             icon: "success",
@@ -199,135 +203,137 @@ const MyListingPage = () => {
         )}
 
         {/* modal */}
-
         <dialog ref={updateModalRef} className="modal">
           <div className="modal-box max-h-[500px] w-11/12 max-w-[800px]">
-            <form onSubmit={handleUpdateBtn}>
-              <h3 className=" font-semibold text-xl ">
-                Update your car details
-              </h3>
-              <fieldset className="fieldset">
-                <label className="label text-accent text-base font-medium mt-2">
-                  Car Name
-                </label>
-                <input
-                  type="text"
-                  className="input shadow-none bg-gray-100 border-none outline-none "
-                  placeholder="Enter Car Name..."
-                  defaultValue={updatedCar?.car_name}
-                  name="car_name"
-                  spellCheck={false}
-                  required
-                />
+            {loading ? (
+              <ModalLoading></ModalLoading>
+            ) : (
+              <form onSubmit={handleUpdateBtn}>
+                <h3 className=" font-semibold text-xl ">
+                  Update your car details
+                </h3>
+                <fieldset className="fieldset">
+                  <label className="label text-accent text-base font-medium mt-2">
+                    Car Name
+                  </label>
+                  <input
+                    type="text"
+                    className="input shadow-none bg-gray-100 border-none outline-none "
+                    placeholder="Enter Car Name..."
+                    defaultValue={updatedCar?.car_name}
+                    name="car_name"
+                    spellCheck={false}
+                    required
+                  />
 
-                {/* description */}
+                  <label className="label text-accent text-base font-medium mt-2">
+                    Description
+                  </label>
+                  <textarea
+                    defaultValue={updatedCar?.description}
+                    name="description"
+                    placeholder="Enter Description Here..."
+                    className="textarea-lg p-3 text-sm bg-gray-100 border-none outline-none min-h-[200px] resize-none "
+                    spellCheck={false}
+                  ></textarea>
 
-                <label className="label text-accent text-base font-medium mt-2">
-                  Description
-                </label>
-                <textarea
-                  defaultValue={updatedCar?.description}
-                  name="description"
-                  placeholder="Enter Description Here..."
-                  className="textarea-lg p-3 text-sm bg-gray-100 border-none outline-none min-h-[200px] resize-none "
-                  spellCheck={false}
-                ></textarea>
+                  {/* dropdown */}
+                  <label className="label text-accent text-base font-medium mt-2">
+                    Category
+                  </label>
+                  <select
+                    defaultValue={updatedCar?.category}
+                    className="select"
+                    name="category"
+                  >
+                    <option value="defaultValue" disabled={true}>
+                      Choose your Category
+                    </option>
+                    {/* selected={updatedCar?.category == "sedan"} */}
+                    <option value="sedan">Sedan</option>
+                    <option value="suv">SUV</option>
+                    <option value="hatchback">Hatchback</option>
+                    <option value="luxury">Luxury</option>
+                    <option value="electric">Electric</option>
+                  </select>
 
-                {/* dropdown */}
-                <label className="label text-accent text-base font-medium mt-2">
-                  Category
-                </label>
-                <select
-                  value={updatedCar?.category}
-                  className="select"
-                  name="category"
-                >
-                  <option value="defaultValue" disabled={true}>
-                    Choose your Category
-                  </option>
-                  <option value="sedan">Sedan</option>
-                  <option value="suv">SUV</option>
-                  <option value="hatchback">Hatchback</option>
-                  <option value="luxury">Luxury</option>
-                  <option value="electric">Electric</option>
-                </select>
+                  {/* rent price */}
+                  <label className="label text-accent text-base font-medium mt-2">
+                    Rent Price (Per day)
+                  </label>
 
-                {/* rent price */}
-                <label className="label text-accent text-base font-medium mt-2">
-                  Rent Price (Per day)
-                </label>
+                  <input
+                    defaultValue={updatedCar?.price_per_day}
+                    type="text"
+                    className="input shadow-none bg-gray-100 border-none outline-none "
+                    placeholder="Enter Rent Price..."
+                    name="price_per_day"
+                    required
+                  />
 
-                <input
-                  defaultValue={updatedCar?.price_per_day}
-                  type="text"
-                  className="input shadow-none bg-gray-100 border-none outline-none "
-                  placeholder="Enter Rent Price..."
-                  name="price_per_day"
-                  required
-                />
+                  {/* location */}
+                  <label className="label text-accent text-base font-medium mt-2">
+                    Location
+                  </label>
 
-                {/* location */}
-                <label className="label text-accent text-base font-medium mt-2">
-                  Location
-                </label>
+                  <input
+                    defaultValue={updatedCar?.location}
+                    type="text"
+                    className="input shadow-none bg-gray-100 border-none outline-none "
+                    placeholder="Enter Location..."
+                    name="location"
+                    spellCheck={false}
+                    required
+                  />
 
-                <input
-                  defaultValue={updatedCar?.location}
-                  type="text"
-                  className="input shadow-none bg-gray-100 border-none outline-none "
-                  placeholder="Enter Location..."
-                  name="location"
-                  spellCheck={false}
-                  required
-                />
+                  {/* image url */}
 
-                {/* image url */}
+                  <label className="label text-accent text-base font-medium mt-2">
+                    PhotoURL
+                  </label>
 
-                <label className="label text-accent text-base font-medium mt-2">
-                  PhotoURL
-                </label>
+                  <input
+                    defaultValue={updatedCar?.photo_url}
+                    type="text"
+                    className="input shadow-none bg-gray-100 border-none outline-none "
+                    placeholder="Enter PhotoURL..."
+                    name="photo_url"
+                    spellCheck={false}
+                    required
+                  />
 
-                <input
-                  defaultValue={updatedCar?.photo_url}
-                  type="text"
-                  className="input shadow-none bg-gray-100 border-none outline-none "
-                  placeholder="Enter PhotoURL..."
-                  name="photo_url"
-                  spellCheck={false}
-                  required
-                />
+                  {/* provider name */}
+                  <label className="label text-accent text-base font-medium mt-2">
+                    Provider Name
+                  </label>
 
-                {/* provider name */}
-                <label className="label text-accent text-base font-medium mt-2">
-                  Provider Name
-                </label>
+                  <input
+                    type="text"
+                    className="input shadow-none bg-gray-100 border-none outline-none "
+                    defaultValue={user?.displayName}
+                    name="provider_name"
+                    readOnly
+                  />
 
-                <input
-                  type="text"
-                  className="input shadow-none bg-gray-100 border-none outline-none "
-                  value={user?.displayName}
-                  name="provider_name"
-                  readOnly
-                />
+                  {/* provider email */}
+                  <label className="label text-accent text-base font-medium mt-2">
+                    Provider Email
+                  </label>
 
-                {/* provider email */}
-                <label className="label text-accent text-base font-medium mt-2">
-                  Provider Email
-                </label>
+                  <input
+                    type="text"
+                    className="input shadow-none bg-gray-100 border-none outline-none "
+                    defaultValue={user?.email}
+                    name="provider_email"
+                    readOnly
+                  />
 
-                <input
-                  type="text"
-                  className="input shadow-none bg-gray-100 border-none outline-none "
-                  value={user?.email}
-                  name="provider_email"
-                  readOnly
-                />
-
-                <button className="btn btn-secondary hover:btn-primary hover:text-secondary outline-none border-none shadow-none mt-4 w-[150px]">
-                  Update Car
-                </button>
-              </fieldset>
-            </form>
+                  <button className="btn btn-secondary hover:btn-primary hover:text-secondary outline-none border-none shadow-none mt-4 w-[150px]">
+                    Update Car
+                  </button>
+                </fieldset>
+              </form>
+            )}
 
             <div className="modal-action">
               <form method="dialog">

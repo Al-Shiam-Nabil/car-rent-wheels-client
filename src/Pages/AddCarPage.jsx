@@ -96,6 +96,7 @@ const AddCarPage = () => {
               placeholder="Enter Description Here..."
               className="textarea-lg p-3 text-sm bg-gray-100 border-none outline-none min-h-[200px] resize-none "
               spellCheck={false}
+              required
             ></textarea>
 
             {/* dropdown */}
@@ -106,6 +107,7 @@ const AddCarPage = () => {
               defaultValue="defaultValue"
               className="select"
               name="category"
+              required
             >
               <option value="defaultValue" disabled={true}>
                 Choose your Category

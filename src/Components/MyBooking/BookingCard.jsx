@@ -36,7 +36,7 @@ const BookingCard = ({ car }) => {
 
         <Link to={`/car-details/${_id}`}>
           {" "}
-          <button className="btn btn-secondary btn-outline">
+          <button className="btn btn-secondary btn-outline shadow-none">
             View Details
           </button>
         </Link>

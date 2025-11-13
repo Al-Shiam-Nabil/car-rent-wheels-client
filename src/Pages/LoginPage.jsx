@@ -86,7 +86,7 @@ const LoginPage = () => {
       <title>Rent Wheels - Login</title>
 
       <Container className="grid place-items-center py-20">
-        <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl px-4 sm:px-6">
+        <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl sm:px-6">
           <div className="card-body">
             <h1 className="text-3xl text-center font-semibold">Login now</h1>
             <form onSubmit={handleLogin}>

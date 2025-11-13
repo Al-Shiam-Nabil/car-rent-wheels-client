@@ -18,12 +18,12 @@ const CarCard = ({ car }) => {
     <motion.div
       whileHover={{
         scale: 1.03,
-        transition: { duration: 0.4 },
+        transition: { duration: 0.3 },
         cursor: "pointer",
       }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.3 }}
     >
-      <div className="bg-white shadow-sm p-5 rounded-xl space-y-2 w-full">
+      <div className="bg-white shadow-sm  rounded-xl space-y-2 w-full">
         <div className="w-full h-[250px] sm:h-[200px] rounded-xl mb-3 relative">
           {status === "available" ? (
             <div className="badge badge-success absolute top-2 right-2 text-white font-semibold py-4">
@@ -38,11 +38,12 @@ const CarCard = ({ car }) => {
           <img
             src={photo_url}
             alt={car_name}
-            className="w-full h-full object-cover bg-gray-100 rounded-xl"
+            className="w-full h-full object-cover bg-gray-100 rounded-tr-xl rounded-tl-xl"
           />
         </div>
 
-        <h3
+        <div className="p-4 pt-1 space-y-2">
+          <h3
           className=" font-medium capitalize truncate "
           data-tooltip-id="my-tooltip"
           data-tooltip-content={car_name}
@@ -75,6 +76,7 @@ const CarCard = ({ car }) => {
             View Details
           </button>
         </Link>
+        </div>
       </div>
     </motion.div>
   );
