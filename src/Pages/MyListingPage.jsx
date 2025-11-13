@@ -14,6 +14,7 @@ const MyListingPage = () => {
   const [loading, setLoading] = useState(true);
   const [updatedCar, setUpdatedCar] = useState(null);
   const [updatedId, setUpdatedId] = useState(null);
+  const [error, setError] = useState(null);
   const updateModalRef = useRef(null);
 
   const location = useLocation();
@@ -40,7 +41,7 @@ const MyListingPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setUpdatedCar(data);
-
+        setError(null);
         setLoading(false);
       });
 
@@ -56,6 +57,13 @@ const MyListingPage = () => {
     const photo_url = e.target.photo_url.value.trim();
     const location = e.target.location.value.trim();
     const description = e.target.description.value.trim();
+
+    if (isNaN(price_per_day) || price_per_day <= 0) {
+      setError("Invalid price.Please enter valid amount.");
+      return;
+    } else {
+      setError(null);
+    }
 
     const carInfo = {
       car_name,
@@ -249,7 +257,6 @@ const MyListingPage = () => {
                     <option value="defaultValue" disabled={true}>
                       Choose your Category
                     </option>
-                    {/* selected={updatedCar?.category == "sedan"} */}
                     <option value="sedan">Sedan</option>
                     <option value="suv">SUV</option>
                     <option value="hatchback">Hatchback</option>
@@ -270,6 +277,8 @@ const MyListingPage = () => {
                     name="price_per_day"
                     required
                   />
+
+                  {error && <p className="text-red-500 mt-1">{error}</p>}
 
                   {/* location */}
                   <label className="label text-accent text-base font-medium mt-2">

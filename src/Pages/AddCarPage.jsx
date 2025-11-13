@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../Components/Container/Container";
 import { useContextHook } from "../Hooks/useContextHook";
 import Swal from "sweetalert2";
@@ -7,6 +7,7 @@ import { useLocation } from "react-router";
 const AddCarPage = () => {
   const { user } = useContextHook();
   const location = useLocation();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -22,6 +23,14 @@ const AddCarPage = () => {
     const description = e.target.description.value.trim();
     const provider_name = user?.displayName;
     const provider_email = user?.email;
+
+    if (isNaN(price_per_day) || price_per_day <= 0) {
+      setError("Invalid price.Please enter valid amount.");
+
+      return;
+    } else {
+      setError(null);
+    }
 
     const carInfo = {
       car_name,
@@ -131,6 +140,7 @@ const AddCarPage = () => {
               name="price_per_day"
               required
             />
+            {error && <p className="text-red-500 mt-1">{error}</p>}
 
             {/* location */}
             <label className="label text-accent text-base font-medium mt-2">
