@@ -7,7 +7,7 @@ RentWheels is a full-stack MERN application that connects users with local car o
 
 **Server-side GitHub Repository :** https://github.com/Al-Shiam-Nabil/car-rent-wheels-server
 
-**Live Website Link Client-side :** https://rent-wheels-project-10.netlify.app/
+**Live Website Link Client-side :** https://car-rent-wheels-client.vercel.app/
 
 **Live Website Link Server-side :** https://car-rent-wheels-server.vercel.app/
 
